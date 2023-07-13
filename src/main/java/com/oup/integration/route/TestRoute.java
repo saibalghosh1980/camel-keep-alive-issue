@@ -11,13 +11,11 @@ public class TestRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 
-        onException(Exception.class).useOriginalMessage()
+        onException(Exception.class)
 
                 .log(LoggingLevel.ERROR, log, "Excepion occurred in Route. Exception : ${exception.message}")
 
-                .log(LoggingLevel.WARN, log, "${exception.stacktrace}")
-
-                .end();
+                .log(LoggingLevel.ERROR, log, "${exception.stacktrace}");
         // TODO Auto-generated method stub
         from("timer://foo?fixedRate=true&period=300000").routeId("id_SampleRoute")
                 .log(LoggingLevel.INFO, log, "Timer Route Started")
