@@ -1,3 +1,5 @@
 logging:
   level:
     '[org.apache.http]': DEBUG
+httpClient:
+  connection-keep-alive-ms: 5000

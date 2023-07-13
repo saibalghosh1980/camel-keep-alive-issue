@@ -26,7 +26,7 @@ public class TestRoute extends RouteBuilder {
                 .to("direct:dummy");
 
         from("direct:dummy")
-                .to("https4://reqres.in/api/users/2?bridgeEndpoint=true&throwExceptionOnFailure=false&httpClient.connectTimeout=20000")
+                .to("https4://reqres.in/api/users/2?bridgeEndpoint=true&throwExceptionOnFailure=false&httpClient.connectTimeout=20000&httpClientConfigurer=httpClientConfigurerBean")
                 .log(LoggingLevel.INFO, log, "${body}");
 
     }
