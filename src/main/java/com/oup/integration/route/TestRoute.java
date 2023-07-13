@@ -1,7 +1,9 @@
 package com.oup.integration.route;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.camel.Exchange;
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +26,7 @@ public class TestRoute extends RouteBuilder {
                 .to("direct:dummy");
 
         from("direct:dummy")
-                .to("https4://reqres.in/api/users/2")
+                .to("https4://reqres.in/api/users/2?bridgeEndpoint=true&throwExceptionOnFailure=false&httpClient.connectTimeout=20000")
                 .log(LoggingLevel.INFO, log, "${body}");
 
     }
