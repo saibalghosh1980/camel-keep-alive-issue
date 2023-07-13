@@ -1,9 +1,7 @@
 package com.oup.integration.route;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.camel.Exchange;
 import org.apache.camel.LoggingLevel;
-import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
@@ -19,14 +17,15 @@ public class TestRoute extends RouteBuilder {
 
                 .log(LoggingLevel.ERROR, log, "${exception.stacktrace}");
         // TODO Auto-generated method stub
-        from("timer://foo?fixedRate=true&period=300000").routeId("id_SampleRoute")
+        from("timer://foo?fixedRate=true&period=15000").routeId("id_SampleRoute")
                 .log(LoggingLevel.INFO, log, "Timer Route Started")
                 //.delay(120000)
                 //.wireTap("direct:dummy")
                 .to("direct:dummy");
 
         from("direct:dummy")
-                .to("https4://reqres.in/api/users/2?bridgeEndpoint=true&throwExceptionOnFailure=false&httpClient.connectTimeout=20000&httpClientConfigurer=httpClientConfigurerBean")
+                .to("https4://reqres.in/api/users/2")
+                        //"bridgeEndpoint=true&throwExceptionOnFailure=false&httpClient.connectTimeout=20000&httpClientConfigurer=httpClientConfigurerBean")
                 .log(LoggingLevel.INFO, log, "${body}");
 
     }

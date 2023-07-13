@@ -22,7 +22,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-@Component("httpClientConfigurerBean")
+//@Component("httpClientConfigurerBean")
 public class HttpClientConfigurerBean implements HttpClientConfigurer {
 
     @Value("${httpClient.connection-keep-alive-ms}")
