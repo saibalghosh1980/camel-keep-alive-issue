@@ -5,3 +5,5 @@ camel:
   component:
     http4:
       connection-time-to-live: 5000
+      connect-timeout: 15000
+      connection-request-timeout: 15000
