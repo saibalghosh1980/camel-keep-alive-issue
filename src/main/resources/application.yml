@@ -1,0 +1,7 @@
+logging:
+  level:
+    '[org.apache.http]': DEBUG
+camel:
+  component:
+    http4:
+      connection-time-to-live: 5000
