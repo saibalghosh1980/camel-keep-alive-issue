@@ -17,7 +17,7 @@ public class TestRoute extends RouteBuilder {
 
                 .log(LoggingLevel.ERROR, log, "${exception.stacktrace}");
         // TODO Auto-generated method stub
-        from("timer://foo?fixedRate=true&period=15000").routeId("id_SampleRoute")
+        from("timer://foo?fixedRate=true&period=300000").routeId("id_SampleRoute")
                 .log(LoggingLevel.INFO, log, "Timer Route Started")
                 //.delay(120000)
                 //.wireTap("direct:dummy")
